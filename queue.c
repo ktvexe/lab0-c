@@ -104,10 +104,8 @@ bool q_insert_tail(queue_t *q, char *s)
         return false;
 
     newh = malloc(sizeof(list_ele_t));
-    if (!newh) {
-        free(newh);
+    if (!newh)
         return false;
-    }
     char *ele_val = malloc((strlen(s) + 1) * sizeof(char));
     if (!ele_val) {
         free(newh);
@@ -178,7 +176,7 @@ int q_size(queue_t *q)
 void q_reverse(queue_t *q)
 {
     /* You need to write the code for this function */
-    if (!q || !q->head)
+    if (!q || !q->head || !q->head->next)
         return;
     list_ele_t *forward, *backward;
 
